@@ -68,7 +68,7 @@
 
     invoke-virtual {p1}, Lcom/weico/international/api/AD_SHOW;->ordinal()I
 
-    move-result p1
+    const/4 p1, 0
 
     aget p1, p2, p1
 

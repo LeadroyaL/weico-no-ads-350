@@ -374,7 +374,7 @@
 
     if-ne v0, v1, :cond_2
 
-    const-string v0, "sinaAD"
+    const-string v0, "main"
 
     return-object v0
 
@@ -384,7 +384,7 @@
 
     if-ne v0, v1, :cond_3
 
-    const-string v0, "CYTAD"
+    const-string v0, "main"
 
     return-object v0
 
@@ -398,7 +398,7 @@
 
     if-nez v0, :cond_4
 
-    const-string v0, "GDTAD"
+    const-string v0, "main"
 
     return-object v0
 

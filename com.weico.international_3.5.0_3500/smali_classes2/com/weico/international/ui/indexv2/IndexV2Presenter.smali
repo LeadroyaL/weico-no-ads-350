@@ -825,7 +825,7 @@
 .end method
 
 .method public getStatusList()Ljava/util/List;
-    .locals 1
+    .locals 10
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()",
@@ -845,6 +845,39 @@
 
     move-result-object v0
 
+const-string v9, "ccttff"
+if-eqz v0, :goto_old
+invoke-interface {v0},Ljava/util/Collection;->isEmpty()Z
+move-result v1
+if-nez v1, :goto_old
+invoke-interface {v0},Ljava/util/Collection;->iterator()Ljava/util/Iterator;
+move-result-object v1
+:loop_start
+
+invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+move-result v2
+if-eqz v2, :goto_old
+invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+move-result-object v2
+instance-of v3, v2, Lcom/weico/international/model/sina/Status;
+if-eqz v3, :loop_start
+check-cast v2, Lcom/weico/international/model/sina/Status;
+invoke-virtual {v2}, Lcom/weico/international/model/sina/Status;->getText()Ljava/lang/String;
+move-result-object v3
+invoke-static {v9,v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+iget-boolean v3,v2,Lcom/weico/international/model/sina/Status;->isUVEAd:Z
+invoke-static {v3}, Ljava/lang/Boolean;->toString(Z)Ljava/lang/String;
+move-result-object v4
+invoke-static {v9,v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+if-nez v3,:remove
+goto :loop_start
+:remove
+invoke-interface {v1},Ljava/util/Iterator;->remove()V
+const-string v3, "remove it!"
+invoke-static {v9,v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+goto :loop_start
+
+:goto_old
     return-object v0
 .end method
 
